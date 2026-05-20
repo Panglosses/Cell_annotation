@@ -1,0 +1,2 @@
+model,label_col,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+scgpt_l3_logreg_probe,celltype_l3,real_scgpt_embedding_plus_logistic_regression,0.9560570071258907,0.8657269136455075,0.944866560214904,0.8997628723017475,0.963200078768491,0.9560570071258907,0.9581981469607235

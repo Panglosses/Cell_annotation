@@ -1,0 +1,25 @@
+# Large local data generated during full reruns
+data/raw/
+data/processed/
+data/geneformer/
+data/uce/
+
+# Python/cache artifacts
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local environments and logs
+.venv/
+env/
+logs/
+
+# Model checkpoints should not be committed
+models/
+*.pt
+*.pth
+*.torch
+
+# OS/editor metadata
+.DS_Store
+Thumbs.db

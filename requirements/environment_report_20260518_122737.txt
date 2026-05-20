@@ -1,0 +1,90 @@
+===== Date =====
+Mon May 18 12:27:37 CST 2026
+
+===== Python =====
+/root/miniconda3/envs/myconda/bin/python
+Python 3.10.12
+
+===== GPU =====
+Mon May 18 12:27:37 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.163.01             Driver Version: 550.163.01     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla P100-SXM2-16GB           On  |   00000000:B4:00.0 Off |                    0 |
+| N/A   32C    P0             31W /  300W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+===== Core packages =====
+torch 2.3.1+cu121
+torch cuda 12.1
+cuda available True
+gpu Tesla P100-SXM2-16GB
+torchtext 0.18.0+cpu
+numpy 1.26.4
+pandas 2.2.2
+scipy 1.12.0
+sklearn 1.6.1
+scanpy 1.11.5
+anndata 0.11.4
+scgpt 0.2.4
+
+===== Project files =====
+/root/dty/project/celltype_fm_benchmark/configs/config.yaml
+/root/dty/project/celltype_fm_benchmark/data/processed/adata_preprocessed_subset.h5ad
+/root/dty/project/celltype_fm_benchmark/data/processed/test_subset.h5ad
+/root/dty/project/celltype_fm_benchmark/data/processed/train_subset.h5ad
+/root/dty/project/celltype_fm_benchmark/results/figures/baseline_model_comparison.png
+/root/dty/project/celltype_fm_benchmark/results/figures/confusion_matrix_knn.png
+/root/dty/project/celltype_fm_benchmark/results/figures/confusion_matrix_logistic_regression.png
+/root/dty/project/celltype_fm_benchmark/results/figures/per_celltype_f1_knn.png
+/root/dty/project/celltype_fm_benchmark/results/figures/per_celltype_f1_logistic_regression.png
+/root/dty/project/celltype_fm_benchmark/results/figures/umap_assay.png
+/root/dty/project/celltype_fm_benchmark/results/figures/umap_celltype_l4.png
+/root/dty/project/celltype_fm_benchmark/results/figures/umap_donor.png
+/root/dty/project/celltype_fm_benchmark/results/figures/umap_tissue.png
+/root/dty/project/celltype_fm_benchmark/results/metrics/all_baseline_metrics_summary.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/cross_tissue_baseline_metrics.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/knn_classification_report.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/knn_confusion_matrix.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/knn_cross_tissue_blood_to_synovial_classification_report.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/knn_cross_tissue_blood_to_synovial_confusion_matrix.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/knn_metrics.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/logreg_classification_report.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/logreg_confusion_matrix.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/logreg_cross_tissue_blood_to_synovial_classification_report.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/logreg_cross_tissue_blood_to_synovial_confusion_matrix.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/logreg_metrics.csv
+/root/dty/project/celltype_fm_benchmark/results/metrics/metrics_summary.csv
+/root/dty/project/celltype_fm_benchmark/results/tables/per_celltype_baseline_metrics.csv
+/root/dty/project/celltype_fm_benchmark/results/tables/qc_after_filtering.csv
+/root/dty/project/celltype_fm_benchmark/results/tables/qc_before_filtering.csv
+/root/dty/project/celltype_fm_benchmark/results/tables/split_summary.csv
+/root/dty/project/celltype_fm_benchmark/results/tables/subset_celltype_summary.csv
+/root/dty/project/celltype_fm_benchmark/scripts/01_check_dataset.py
+/root/dty/project/celltype_fm_benchmark/scripts/02_make_subset.py
+/root/dty/project/celltype_fm_benchmark/scripts/03_preprocess_subset.py
+/root/dty/project/celltype_fm_benchmark/scripts/04_split_data.py
+/root/dty/project/celltype_fm_benchmark/scripts/05_train_logreg_baseline.py
+/root/dty/project/celltype_fm_benchmark/scripts/06_train_knn_baseline.py
+/root/dty/project/celltype_fm_benchmark/scripts/07_summarize_baselines.py
+/root/dty/project/celltype_fm_benchmark/scripts/08_plot_baseline_details.py
+/root/dty/project/celltype_fm_benchmark/scripts/09_cross_tissue_baseline.py
+/root/dty/project/celltype_fm_benchmark/scripts/10_merge_all_baseline_metrics.py
+
+===== scGPT model files =====
+/root/dty/models/scgpt_human/scGPT_human/vocab.json
+/root/dty/models/scgpt_human/scGPT_human/args.json
+/root/dty/models/scgpt_human/scGPT_human/best_model.pt

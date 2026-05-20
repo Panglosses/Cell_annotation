@@ -1,0 +1,9 @@
+comparison,label_level,metric,point_difference,ci95_low,ci95_high,bootstrap_p_two_sided_directional,n_bootstrap
+scGPT + MLP minus UCE + MLP,celltype_l4,weighted_f1_difference,0.0024308066979843446,-0.010719827144029767,0.015671775533656413,0.6984,5000
+scGPT + Logistic Regression minus UCE + Logistic Regression,celltype_l4,weighted_f1_difference,-0.0616481850414059,-0.07743567117539585,-0.04605075095602529,0.0,5000
+scGPT + MLP minus scGPT + Logistic Regression,celltype_l4,weighted_f1_difference,0.08234711253885618,0.06895052624201822,0.0955036738162802,0.0,5000
+UCE + MLP minus UCE + Logistic Regression,celltype_l4,weighted_f1_difference,0.018268120799465937,0.007245722900866836,0.029135217021051773,0.0012,5000
+Geneformer V1-10M + MLP minus Geneformer V1-10M + Logistic Regression,celltype_l4,weighted_f1_difference,-0.0008289669169594394,-0.014293881344258972,0.012863354101305239,0.9276,5000
+UCE + MLP minus Geneformer V1-10M + MLP,celltype_l4,weighted_f1_difference,0.15482611619062348,0.1380648124580313,0.17203755920557046,0.0,5000
+scGPT + MLP minus Geneformer V1-10M + MLP,celltype_l4,weighted_f1_difference,0.15725692288860782,0.14133932291460205,0.17305237730769668,0.0,5000
+UCE + Logistic Regression (celltype_l3) minus scGPT + Logistic Regression (celltype_l3),celltype_l3,weighted_f1_difference,0.015884250246265275,0.009367529811302048,0.02250163812551643,0.0,5000

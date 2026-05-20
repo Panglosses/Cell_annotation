@@ -1,0 +1,6 @@
+metric,value
+n_cells,16836.0
+n_genes,22144.0
+median_nCount_RNA,4632.0
+median_nFeature_RNA,2127.0
+median_percent_mitochondrial,3.055807113647461

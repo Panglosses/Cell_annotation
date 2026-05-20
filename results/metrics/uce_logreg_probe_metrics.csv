@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+uce_logreg_probe,real_uce_embedding_plus_logistic_regression,0.8381828978622328,0.8024955233237332,0.804584745879254,0.8031151567875242,0.8378128768293356,0.8381828978622328,0.8375525223969967

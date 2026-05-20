@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+scgpt_mlp_probe,real_scgpt_embedding_plus_mlp_classifier,0.8583729216152018,0.8527202934864355,0.8263397670211247,0.8380936068651529,0.8592108336945639,0.8583729216152018,0.858251449894447

@@ -1,0 +1,34 @@
+UCE result summary
+
+Workflow:
+- Used real UCE 4-layer checkpoint:
+  /root/dty/models/UCE/model_files/4layer_model.torch
+- Used UCE model files:
+  all_tokens.torch, species_chrom.csv, species_offsets.pkl, protein_embeddings/
+- Converted h5ad var_names from Ensembl IDs to gene symbols for UCE input.
+- Generated UCE embeddings using uce-eval-single-anndata.
+- Embedding source: obsm["X_uce"]
+- Train embedding shape: 13468 x 1280
+- Test embedding shape: 3368 x 1280
+
+Results:
+1. UCE + Logistic Regression, celltype_l4
+   accuracy = 0.838183
+   macro_f1 = 0.803115
+   weighted_f1 = 0.837553
+
+2. UCE + MLP, celltype_l4
+   accuracy = 0.856591
+   macro_f1 = 0.844505
+   weighted_f1 = 0.855821
+
+3. UCE + Logistic Regression, celltype_l3
+   accuracy = 0.973278
+   macro_f1 = 0.936444
+   weighted_f1 = 0.974082
+
+Interpretation:
+- UCE embeddings capture broad NK/ILC lineage structure very strongly.
+- Fine-grained celltype_l4 labels remain harder than broad celltype_l3 labels.
+- UCE + MLP is close to scGPT + MLP on celltype_l4.
+- This workflow uses real UCE embeddings and does not use PCA fallback.

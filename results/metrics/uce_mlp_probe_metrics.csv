@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+uce_mlp_probe,real_uce_embedding_plus_mlp_classifier,0.8565914489311164,0.8542678651791354,0.8372498290731252,0.8445045668935456,0.8571175681047836,0.8565914489311164,0.8558206431964628

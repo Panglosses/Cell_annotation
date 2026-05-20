@@ -1,0 +1,17 @@
+Real scGPT result completed.
+
+Workflow:
+- Loaded real scGPT checkpoint from /root/dty/models/scgpt_human/scGPT_human
+- Required files: vocab.json, args.json, best_model.pt
+- Matched genes: 21524 / 22144
+- Train embedding shape: 13468 x 512
+- Test embedding shape: 3368 x 512
+- Classifier: LogisticRegression on scGPT embeddings
+- Label: celltype_l4
+
+Metrics:
+accuracy = 0.778207
+macro_f1 = 0.756575
+weighted_f1 = 0.775904
+
+This is a real scGPT embedding-based workflow, not PCA fallback.

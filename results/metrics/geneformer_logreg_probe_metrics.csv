@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+geneformer_logreg_probe,real_geneformer_v1_embedding_plus_logistic_regression,0.7007125890736342,0.6368531499002291,0.6754640676901993,0.651124380952579,0.7099471261558989,0.7007125890736342,0.7018234939227986

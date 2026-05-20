@@ -1,0 +1,28 @@
+Geneformer result summary
+
+Workflow:
+- Used real Geneformer-V1-10M model.
+- Input genes were Ensembl IDs from h5ad var_names.
+- Tokenized train/test h5ad with Geneformer V1 dictionaries.
+- Extracted Geneformer cell embeddings using EmbExtractor.
+- Train embedding shape: 13468 x 256
+- Test embedding shape: 3368 x 256
+- Evaluated downstream classifiers on celltype_l4:
+  1. Geneformer embedding + Logistic Regression
+  2. Geneformer embedding + MLP
+
+Results:
+1. Geneformer + Logistic Regression, celltype_l4
+   accuracy = 0.700713
+   macro_f1 = 0.651124
+   weighted_f1 = 0.701823
+
+2. Geneformer + MLP, celltype_l4
+   accuracy = 0.704572
+   macro_f1 = 0.659408
+   weighted_f1 = 0.700995
+
+Interpretation:
+- Geneformer V1-10M frozen embeddings underperformed scGPT embeddings and traditional dataset-specific baselines on this fine-grained JIA NK/ILC celltype_l4 annotation task.
+- MLP did not substantially improve over Logistic Regression, suggesting limited separability of these labels in the frozen Geneformer V1-10M embedding space.
+- This workflow uses real Geneformer embeddings and does not use PCA fallback.

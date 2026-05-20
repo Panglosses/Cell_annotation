@@ -1,0 +1,17 @@
+{
+  "foundation_model": "UCE",
+  "checkpoint": "/root/dty/models/UCE/model_files/4layer_model.torch",
+  "embedding_source": "obsm[X_uce]",
+  "train_uce_h5ad": "data/uce/train_outputtrain_uce_input_uce_adata.h5ad",
+  "test_uce_h5ad": "data/uce/test_outputtest_uce_input_uce_adata.h5ad",
+  "train_shape": [
+    13468,
+    1280
+  ],
+  "test_shape": [
+    3368,
+    1280
+  ],
+  "label_col": "celltype_l4",
+  "method": "real_uce_embedding_plus_mlp_classifier"
+}

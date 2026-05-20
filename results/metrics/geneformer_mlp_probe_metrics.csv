@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+geneformer_mlp_probe,real_geneformer_v1_embedding_plus_mlp_classifier,0.7045724465558195,0.6819962596577779,0.6482560235777913,0.6594080786322043,0.7015796237343048,0.7045724465558195,0.7009945270058392

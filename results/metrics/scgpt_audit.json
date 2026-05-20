@@ -1,0 +1,23 @@
+{
+  "model": "scgpt",
+  "model_dir": "/root/dty/models/scgpt_human/scGPT_human",
+  "required_files": [
+    "vocab.json",
+    "args.json",
+    "best_model.pt"
+  ],
+  "gene_col": "gene_symbol",
+  "embedding_key_train": "X",
+  "embedding_key_test": "X",
+  "train_embedding_shape": [
+    13468,
+    512
+  ],
+  "test_embedding_shape": [
+    3368,
+    512
+  ],
+  "method": "scgpt.tasks.embed_data + LogisticRegression",
+  "batch_size": 4,
+  "max_length": 1200
+}

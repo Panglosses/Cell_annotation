@@ -1,0 +1,30 @@
+{
+  "model": "scgpt_mlp_probe",
+  "input_embedding": "data/processed/train_X_scGPT.npy and test_X_scGPT.npy",
+  "embedding_source": "real scGPT checkpoint embeddings",
+  "classifier": "sklearn MLPClassifier",
+  "hidden_layer_sizes": [
+    256,
+    128
+  ],
+  "label_col": "celltype_l4",
+  "train_shape": [
+    13468,
+    512
+  ],
+  "test_shape": [
+    3368,
+    512
+  ],
+  "label_classes": [
+    "C1",
+    "C2",
+    "C3",
+    "CD56bright NK",
+    "CD56dim NK",
+    "Cycling NK",
+    "ILC2",
+    "ILC3",
+    "Na\u00efve-like ILC"
+  ]
+}

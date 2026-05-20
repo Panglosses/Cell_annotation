@@ -1,0 +1,19 @@
+{
+  "model": "geneformer_logreg_probe",
+  "foundation_model": "Geneformer",
+  "checkpoint": "Geneformer-V1-10M",
+  "embedding_source": "EmbExtractor cell embeddings",
+  "embedding_dim": 256,
+  "train_csv": "data/geneformer/embeddings/jia_train_geneformer_v1.csv",
+  "test_csv": "data/geneformer/embeddings/jia_test_geneformer_v1.csv",
+  "label_col": "celltype_l4",
+  "train_shape": [
+    13468,
+    256
+  ],
+  "test_shape": [
+    3368,
+    256
+  ],
+  "method": "real_geneformer_v1_embedding_plus_logistic_regression"
+}

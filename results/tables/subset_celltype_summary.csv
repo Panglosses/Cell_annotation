@@ -1,0 +1,10 @@
+celltype_l4,n_cells
+C1,3000
+C2,3000
+CD56dim NK,3000
+Cycling NK,2771
+CD56bright NK,2173
+C3,1022
+ILC2,871
+Naïve-like ILC,593
+ILC3,406
