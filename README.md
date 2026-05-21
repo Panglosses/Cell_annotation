@@ -24,7 +24,7 @@ scripts/
   02_scgpt/           scGPT embedding extraction and downstream probes
   03_geneformer/      Geneformer input preparation, tokenization, embeddings, probes
   04_uce/             UCE input preparation and downstream probes
-  05_analysis/        metric summaries, report figures, supplementary table
+  05_analysis/        metric summaries, report figures, supplementary and post hoc checks
 
 results/
   metrics/            model-level metrics, confusion matrices, audit files
@@ -77,6 +77,8 @@ The PCA + Logistic Regression baseline was included as a strong supervised basel
 
 The foundation models were tested as frozen embedding generators. Logistic Regression was used as a linear probe, and MLP was added to test whether nonlinear boundaries helped recover more information from the embeddings.
 
+A PCA + MLP check was added after the main report figures were fixed. I kept it separate from the main benchmark table because it was a post hoc fairness check, not part of the original model set.
+
 Geneformer V1-10M was the feasible Geneformer checkpoint used here. Its result should not be read as a statement about every Geneformer model size or a fine-tuned Geneformer workflow.
 
 ## Main results
@@ -106,17 +108,21 @@ The random-split `celltype_l4`, random-split `celltype_l3` and blood-to-synovial
 
 ## Key takeaways
 
-- The best fine-grained `celltype_l4` result was PCA + Logistic Regression (weighted F1 = 0.9065).
+- In the main table, the best fine-grained `celltype_l4` result was PCA + Logistic Regression (weighted F1 = 0.9065). A post hoc PCA + MLP check reached weighted F1 = 0.9141.
 - Among frozen foundation-model embeddings, scGPT + MLP and UCE + MLP were close to each other (weighted F1 around 0.856), but neither exceeded the PCA baseline.
 - Geneformer V1-10M was lower on this task (weighted F1 around 0.70).
 - scGPT and UCE performed much better on broad `celltype_l3` labels, which suggests that frozen embeddings captured NK/ILC lineage structure better than fine subtype or state boundaries.
-- For this dataset and frozen-embedding setup, PCA + Logistic Regression was the best practical model. scGPT and UCE still looked useful as representation models, especially for broader lineage-level structure.
+- For this dataset and frozen-embedding setup, dataset-specific PCA classifiers remained the strongest practical methods. scGPT and UCE still looked useful as representation models, especially for broader lineage-level structure.
 
 ## Interpretation notes
 
 The gap between PCA + Logistic Regression and the best foundation-model probes is meaningful because the models used the same random train/test split for `celltype_l4`. It does not mean the foundation models failed biologically. Their stronger `celltype_l3` results suggest that they captured broad NK/ILC identity, while the fine labels were harder.
 
+The post hoc PCA + MLP result is in `results/metrics/pca_mlp_same_split_metrics.csv`. Paired bootstrap tables with the added PCA checks are in `results/tables/paired_bootstrap_weighted_f1_ci_posthoc.csv` and `results/tables/paired_bootstrap_weighted_f1_differences_posthoc.csv`.
+
 The main fine-label confusions involved C1, C2, C3, CD56bright NK and Naive-like ILC. These numbers are summarized in `results/tables/supplementary_table2_confusion_f1_summary.csv`.
+
+An internal C1/C2/C3 marker-direction check is provided in `results/tables/C1_C2_C3_internal_marker_stability_summary.csv`. It checks train/test consistency inside this dataset only; it is not external biological validation.
 
 The blood-to-synovial-fluid baseline was included as a secondary domain-shift test. It should not be compared directly with the random-split rows as a single ranking.
 
@@ -178,6 +184,7 @@ python scripts/05_analysis/08_plot_baseline_details.py
 python scripts/05_analysis/10_merge_all_baseline_metrics.py
 python scripts/05_analysis/11_make_report_figures.py
 python scripts/05_analysis/12_make_supplementary_confusion_summary.py
+python scripts/05_analysis/16_posthoc_pca_mlp_bootstrap_marker_checks.py
 ```
 
 One possible point of confusion: `61_tokenize_geneformer_v1.py` is for Geneformer. It uses Geneformer's `TranscriptomeTokenizer`. UCE has its own reference/model files and is handled separately in `scripts/04_uce/`.

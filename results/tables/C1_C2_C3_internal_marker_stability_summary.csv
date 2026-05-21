@@ -1,0 +1,4 @@
+state,train_cells,test_cells,top20_test_direction_consistency,top50_train_test_spearman,top50_spearman_p,note
+C1,2400,600,1.0,0.9221128451380551,1.988979154147779e-21,Internal train/test marker-direction check only; not external biological validation.
+C2,2400,600,1.0,0.9283553421368548,2.8764883058119183e-22,Internal train/test marker-direction check only; not external biological validation.
+C3,817,205,1.0,0.8736134453781513,1.2595720662622025e-16,Internal train/test marker-direction check only; not external biological validation.

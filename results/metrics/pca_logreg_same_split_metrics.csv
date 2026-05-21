@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+pca_logreg_same_split,PCA_50_plus_logistic_regression_recomputed_same_split,0.9070665083135392,0.8878215030774836,0.9049840509956896,0.8955665932245288,0.9081212501754307,0.9070665083135392,0.9068244192112599

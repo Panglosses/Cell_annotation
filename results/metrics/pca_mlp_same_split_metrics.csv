@@ -1,0 +1,2 @@
+model,method,accuracy,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1
+pca_mlp_same_split,PCA_50_plus_MLPClassifier_same_architecture_as_foundation_MLP_probes,0.9141923990498813,0.9107286637199663,0.9014975467662288,0.9055768064165712,0.9144091124392424,0.9141923990498813,0.9141323921885036
