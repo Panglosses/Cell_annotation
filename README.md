@@ -2,7 +2,7 @@
 
 This repository contains the code and output files for my mini-project on automatic NK/ILC cell-state annotation in juvenile idiopathic arthritis (JIA). I compared conventional PCA-based classifiers with frozen embeddings from three single-cell foundation models: scGPT, Geneformer V1-10M and UCE.
 
-The main question was simple: do pretrained single-cell embeddings help with fine-grained `celltype_l4` annotation, or does a dataset-specific baseline still work better?
+The main question was whether pretrained single-cell embeddings improve fine-grained `celltype_l4` annotation, or whether a dataset-specific baseline is still stronger for this JIA NK/ILC task.
 
 ## What is included
 
@@ -73,7 +73,7 @@ All foundation-model embeddings were used frozen. No foundation model was fine-t
 
 ## Method choices
 
-The PCA + Logistic Regression baseline was included as a strong supervised baseline, not as a throwaway comparator. It directly learns the study-specific `celltype_l4` label space from normalized expression.
+The PCA + Logistic Regression baseline was included as a strong supervised baseline, not as a weak comparator. It directly learns the study-specific `celltype_l4` label space from normalized expression.
 
 The foundation models were tested as frozen embedding generators. Logistic Regression was used as a linear probe, and MLP was added to test whether nonlinear boundaries helped recover more information from the embeddings.
 
@@ -112,7 +112,7 @@ The random-split `celltype_l4`, random-split `celltype_l3` and blood-to-synovial
 - Among frozen foundation-model embeddings, scGPT + MLP and UCE + MLP were close to each other (weighted F1 around 0.856), but neither exceeded the PCA baseline.
 - Geneformer V1-10M was lower on this task (weighted F1 around 0.70).
 - scGPT and UCE performed much better on broad `celltype_l3` labels, which suggests that frozen embeddings captured NK/ILC lineage structure better than fine subtype or state boundaries.
-- For this dataset and frozen-embedding setup, dataset-specific PCA classifiers remained the strongest practical methods. scGPT and UCE still looked useful as representation models, especially for broader lineage-level structure.
+- For this dataset and frozen-embedding setup, dataset-specific PCA classifiers remained the strongest practical methods. scGPT and UCE were still useful as representation models, especially for broader lineage-level structure.
 
 ## Interpretation notes
 
@@ -124,7 +124,9 @@ The main fine-label confusions involved C1, C2, C3, CD56bright NK and Naive-like
 
 An internal C1/C2/C3 marker-direction check is provided in `results/tables/C1_C2_C3_internal_marker_stability_summary.csv`. It checks train/test consistency inside this dataset only; it is not external biological validation.
 
-The blood-to-synovial-fluid baseline was included as a secondary domain-shift test. It should not be compared directly with the random-split rows as a single ranking.
+Post hoc repeated-split checks were added for PCA, scGPT and Geneformer. The summary files are `results/metrics/repeated_split_pca_summary.csv`, `results/metrics/repeated_split_scgpt_summary.csv` and `results/metrics/repeated_split_geneformer_summary.csv`; by-seed files are in the same folder.
+
+Blood-to-synovial-fluid transfer was included as a secondary domain-shift test. The original PCA baseline transfer results are in the main metrics table, and additional scGPT/Geneformer transfer summaries are in `results/metrics/scgpt_blood_to_synovial_summary.csv` and `results/metrics/geneformer_blood_to_synovial_summary.csv`. These rows should not be compared directly with the random-split rows as one single ranking.
 
 ## Report figures
 
@@ -134,10 +136,7 @@ Main figures generated for the report:
 - `results/figures/figure2_per_class_f1_heatmap.png`
 - `results/figures/supplementary_table2_confusion_f1_summary.png`
 
-The final Word files are:
-
-- `docs/main_report_final.docx`
-- `docs/supplementary_materials.docx`
+The report documents are submitted separately rather than stored in this GitHub-ready code folder.
 
 ## How to rerun
 
@@ -185,9 +184,12 @@ python scripts/05_analysis/10_merge_all_baseline_metrics.py
 python scripts/05_analysis/11_make_report_figures.py
 python scripts/05_analysis/12_make_supplementary_confusion_summary.py
 python scripts/05_analysis/16_posthoc_pca_mlp_bootstrap_marker_checks.py
+python scripts/05_analysis/17_repeated_split_pca.py
+python scripts/05_analysis/18_scgpt_repeated_and_cross_tissue.py
+python scripts/05_analysis/19_geneformer_repeated_and_cross_tissue.py
 ```
 
-One possible point of confusion: `61_tokenize_geneformer_v1.py` is for Geneformer. It uses Geneformer's `TranscriptomeTokenizer`. UCE has its own reference/model files and is handled separately in `scripts/04_uce/`.
+Tokenization note: `61_tokenize_geneformer_v1.py` is for Geneformer. It uses Geneformer's `TranscriptomeTokenizer`. UCE has its own reference/model files and is handled separately in `scripts/04_uce/`.
 
 ## External files needed for a full rerun
 
@@ -203,6 +205,8 @@ Some scripts still contain the model paths used during my run. These should be e
 ## Notes
 
 - The main train/test comparison uses one stratified random split from the same study.
-- Cross-tissue transfer was tested only for the PCA-based baselines.
+- Post hoc repeated-split checks were completed for PCA, scGPT and Geneformer, but not UCE.
+- Blood-to-synovial transfer was tested for PCA baselines, scGPT and Geneformer. UCE was included in the main random-split benchmark but not in the post hoc transfer check because reusable split-level UCE embedding objects were not retained.
+- Geneformer `celltype_l3` was not run, so the broad-label comparison is limited to scGPT and UCE.
 - The foundation models were used as frozen embedding generators.
 

@@ -1,0 +1,19 @@
+{
+  "model": "scGPT",
+  "model_dir": "/root/dty/models/scGPT_human",
+  "blood_cells": 6762,
+  "synovial_cells": 10074,
+  "blood_embedding_shape": [
+    6762,
+    512
+  ],
+  "synovial_embedding_shape": [
+    10074,
+    512
+  ],
+  "embedding_keys": {
+    "blood": "X",
+    "synovial": "X"
+  },
+  "outputs": "/root/dty/project/celltype_fm_benchmark/rerun_logs/depth_extension"
+}

@@ -1,0 +1,11 @@
+{
+  "foundation_model": "Geneformer",
+  "checkpoint": "Geneformer-V1-10M",
+  "embedding_source": "rerun EmbExtractor cell embeddings",
+  "train_tissue": "blood",
+  "test_tissue": "synovial fluid",
+  "n_blood": 6762,
+  "n_synovial_fluid": 10074,
+  "label_col": "celltype_l4",
+  "embedding_dim": 256
+}
